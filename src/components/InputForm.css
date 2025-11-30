@@ -1,0 +1,463 @@
+/* ============================================
+   InputForm Component Styles
+   Netflix-inspired Hawkins Design Aesthetic
+   ============================================ */
+
+.input-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.input-form__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Form Field Styles
+   ============================================ */
+
+.input-form__field {
+  margin-bottom: var(--spacing-lg);
+}
+
+.input-form__label {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Input and Textarea Styles
+   ============================================ */
+
+.input-form__input,
+.input-form__textarea {
+  width: 100%;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.input-form__input::placeholder,
+.input-form__textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Focus State with Hawkins Glow */
+.input-form__input:focus,
+.input-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 0 1px var(--color-accent-red),
+    0 0 20px var(--color-glow-red);
+}
+
+/* Hover State */
+.input-form__input:hover:not(:focus),
+.input-form__textarea:hover:not(:focus) {
+  border-color: rgba(229, 9, 20, 0.3);
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.2);
+}
+
+/* Error State */
+.input-form__input--error,
+.input-form__textarea.input-form__input--error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+}
+
+.input-form__input--error:focus,
+.input-form__textarea.input-form__input--error:focus {
+  border-color: var(--color-error);
+  box-shadow: 
+    0 0 0 1px var(--color-error),
+    0 0 20px rgba(244, 67, 54, 0.4);
+}
+
+/* Textarea Specific Styles */
+.input-form__textarea {
+  resize: vertical;
+  min-height: 180px;
+  line-height: 1.6;
+  font-family: var(--font-secondary);
+}
+
+/* ============================================
+   Error Message Styles
+   ============================================ */
+
+.input-form__error {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+  animation: slideIn 0.3s ease-out;
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   Tone Selector Styles - Figma Design
+   ============================================ */
+
+.tone-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.tone-selector__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  min-height: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tone-selector__option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(229, 9, 20, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tone-selector__option:hover::before {
+  opacity: 1;
+}
+
+.tone-selector__option:hover {
+  border-color: rgba(229, 9, 20, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.2);
+}
+
+.tone-selector__option--active {
+  border-color: var(--color-accent-red);
+  background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(229, 9, 20, 0.15) 100%);
+  box-shadow: 
+    0 0 20px var(--color-glow-red),
+    0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.tone-selector__option--active::before {
+  opacity: 0.5;
+}
+
+.tone-selector__option:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 4px rgba(229, 9, 20, 0.3),
+    0 0 20px var(--color-glow-red);
+}
+
+.tone-selector__icon {
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.tone-selector__option:hover .tone-selector__icon,
+.tone-selector__option--active .tone-selector__icon {
+  transform: scale(1.2);
+}
+
+.tone-selector__label {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.tone-selector__option--active .tone-selector__label {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   Submit Button Styles
+   ============================================ */
+
+.input-form__submit {
+  width: 100%;
+  background-color: var(--color-accent-red);
+  color: var(--color-text-primary);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--spacing-lg);
+}
+
+.input-form__submit:hover:not(:disabled) {
+  background-color: var(--color-accent-red-hover);
+  box-shadow: 
+    0 0 20px var(--color-glow-red),
+    0 0 40px var(--color-glow-red);
+  transform: translateY(-2px);
+}
+
+.input-form__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.input-form__submit:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px var(--color-accent-red),
+    0 0 20px var(--color-glow-red),
+    0 0 40px var(--color-glow-red);
+}
+
+.input-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   Loading State Styles
+   ============================================ */
+
+.input-form__submit-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.input-form__submit-loading .loading-spinner-container {
+  margin: 0;
+}
+
+.input-form__submit-loading .loading-spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.input-form__submit-loading .spinner-ring {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.input-form__submit-loading .loading-message {
+  display: none;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Mobile (< 768px) - Base styles with touch-friendly targets */
+@media (max-width: 767px) {
+  .input-form {
+    padding: var(--spacing-lg);
+  }
+
+  .input-form__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .input-form__field {
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Touch-friendly input sizing (minimum 44px height for touch targets) */
+  .input-form__input {
+    min-height: 44px;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md);
+  }
+
+  .input-form__textarea {
+    min-height: 150px;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md);
+  }
+
+  /* Touch-friendly button sizing (minimum 44px height) */
+  .input-form__submit {
+    min-height: 48px;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) var(--spacing-lg);
+    /* Larger touch target for better mobile UX */
+    touch-action: manipulation;
+  }
+
+  /* Tone selector mobile layout */
+  .tone-selector {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .tone-selector__option {
+    min-height: 70px;
+    padding: var(--spacing-sm);
+  }
+
+  .tone-selector__icon {
+    font-size: var(--font-size-xl);
+  }
+
+  .tone-selector__label {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .input-form {
+    padding: var(--spacing-2xl);
+  }
+
+  .input-form__title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .input-form__field {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .input-form__input {
+    min-height: 48px;
+  }
+
+  .input-form__textarea {
+    min-height: 200px;
+  }
+
+  .input-form__submit {
+    min-height: 52px;
+  }
+
+  /* Tone selector tablet layout */
+  .tone-selector {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .input-form {
+    padding: var(--spacing-3xl);
+  }
+
+  .input-form__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .input-form__input,
+  .input-form__textarea {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .input-form__textarea {
+    min-height: 220px;
+  }
+
+  .input-form__submit {
+    font-size: var(--font-size-xl);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+  }
+
+  /* Tone selector desktop layout */
+  .tone-selector {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tone-selector__option {
+    min-height: 90px;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .input-form__input,
+  .input-form__textarea {
+    border-width: 2px;
+  }
+
+  .input-form__input--error,
+  .input-form__textarea.input-form__input--error {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .input-form {
+    animation: none;
+  }
+
+  .input-form__error {
+    animation: none;
+  }
+
+  .input-form__input,
+  .input-form__textarea,
+  .input-form__submit {
+    transition: none;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.input-form__input:focus-visible,
+.input-form__textarea:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 2px;
+}

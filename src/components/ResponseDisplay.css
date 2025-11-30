@@ -1,0 +1,381 @@
+/* ============================================
+   ResponseDisplay Component Styles
+   Netflix-inspired Hawkins Design with Glassmorphism
+   ============================================ */
+
+.response-display {
+  /* Glassmorphism base */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  
+  /* Layout */
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  
+  /* Subtle glow effect */
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(229, 9, 20, 0.1);
+  
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .response-display {
+    background: rgba(26, 26, 26, 0.95);
+  }
+}
+
+/* Loading state variant */
+.response-display--loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+/* ============================================
+   Fade-in Animation for Response Appearance
+   ============================================ */
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Header Section
+   ============================================ */
+
+.response-display__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.response-display__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  
+  /* Hawkins glow effect */
+  text-shadow: 
+    0 0 10px var(--color-glow-red),
+    0 0 20px var(--color-glow-red);
+}
+
+.response-display__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Content Section
+   ============================================ */
+
+.response-display__content {
+  /* Inner glassmorphism card */
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  
+  /* Scrollable if content is long */
+  max-height: 500px;
+  overflow-y: auto;
+  
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-red) rgba(255, 255, 255, 0.1);
+  
+  /* Smooth transition for focus */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Focus state for keyboard navigation */
+.response-display__content:focus {
+  outline: none;
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 0 2px var(--color-accent-red),
+    0 0 20px var(--color-glow-red);
+}
+
+.response-display__content:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 2px;
+}
+
+/* Webkit scrollbar styling */
+.response-display__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.response-display__content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.response-display__content::-webkit-scrollbar-thumb {
+  background: var(--color-accent-red);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.response-display__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-red-hover);
+}
+
+.response-display__text {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* ============================================
+   Regenerate Button
+   ============================================ */
+
+.regenerate-button {
+  /* Glassmorphism base */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  
+  /* Touch-friendly minimum size */
+  min-height: 44px;
+  min-width: 44px;
+  
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  
+  /* Prevent double-tap zoom on mobile */
+  touch-action: manipulation;
+  
+  /* Smooth transitions (200-400ms as per design) */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .regenerate-button {
+    background: rgba(26, 26, 26, 0.9);
+  }
+}
+
+/* Hover state with glow effect */
+.regenerate-button:hover {
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 20px var(--color-glow-red),
+    0 0 40px rgba(229, 9, 20, 0.3);
+  transform: translateY(-2px);
+}
+
+.regenerate-button:hover .regenerate-button__icon {
+  transform: rotate(180deg);
+}
+
+/* Focus state for accessibility */
+.regenerate-button:focus-visible {
+  outline: none;
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 0 2px var(--color-accent-red),
+    0 0 20px var(--color-glow-red);
+}
+
+/* Active/pressed state */
+.regenerate-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 0 10px var(--color-glow-red);
+}
+
+/* Icon container */
+.regenerate-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.regenerate-button__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Text label */
+.regenerate-button__text {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Disabled state */
+.regenerate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Mobile (< 768px) - base styles above */
+@media (max-width: 767px) {
+  .response-display {
+    padding: var(--spacing-lg);
+  }
+  
+  .response-display__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .response-display__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .response-display__title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .response-display__content {
+    max-height: 400px;
+  }
+  
+  .response-display__text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .response-display {
+    padding: var(--spacing-xl);
+  }
+  
+  .response-display__title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .response-display__content {
+    max-height: 450px;
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .response-display {
+    padding: var(--spacing-2xl);
+  }
+  
+  .response-display__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .response-display__content {
+    max-height: 500px;
+    padding: var(--spacing-xl);
+  }
+  
+  .response-display__text {
+    font-size: var(--font-size-base);
+  }
+  
+  /* Enhanced hover effects on desktop */
+  .response-display:hover {
+    box-shadow: 
+      0 8px 12px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(229, 9, 20, 0.2);
+  }
+}
+
+/* ============================================
+   Accessibility - Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .response-display,
+  .regenerate-button,
+  .regenerate-button__icon {
+    transition: none;
+    animation: none;
+  }
+  
+  .fade-in {
+    animation: none;
+  }
+  
+  .regenerate-button:hover {
+    transform: none;
+  }
+  
+  .regenerate-button:hover .regenerate-button__icon {
+    transform: none;
+  }
+  
+  .regenerate-button:active {
+    transform: none;
+  }
+}
+
+/* ============================================
+   Screen Reader Only Text
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

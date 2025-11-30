@@ -1,0 +1,222 @@
+/* ============================================
+   CopyButton Component Styles
+   Netflix-inspired Hawkins Design with Glassmorphism
+   ============================================ */
+
+.copy-button {
+  /* Glassmorphism base */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  
+  /* Smooth transitions (200-400ms as per design) */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .copy-button {
+    background: rgba(26, 26, 26, 0.9);
+  }
+}
+
+/* Hover state with glow effect */
+.copy-button:hover {
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 20px var(--color-glow-red),
+    0 0 40px rgba(229, 9, 20, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Focus state for accessibility */
+.copy-button:focus-visible {
+  outline: none;
+  border-color: var(--color-accent-red);
+  box-shadow: 
+    0 0 0 2px var(--color-accent-red),
+    0 0 20px var(--color-glow-red);
+}
+
+/* Active/pressed state */
+.copy-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 0 10px var(--color-glow-red);
+}
+
+/* Success state - green glow */
+.copy-button--success {
+  border-color: var(--color-success);
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--color-success);
+}
+
+.copy-button--success:hover {
+  border-color: var(--color-success);
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.6),
+    0 0 40px rgba(76, 175, 80, 0.3);
+}
+
+.copy-button--success .copy-button__icon {
+  animation: successPulse 0.4s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Error state - red glow */
+.copy-button--error {
+  border-color: var(--color-error);
+  background: rgba(244, 67, 54, 0.1);
+  color: var(--color-error);
+}
+
+.copy-button--error:hover {
+  border-color: var(--color-error);
+  box-shadow: 
+    0 0 20px rgba(244, 67, 54, 0.6),
+    0 0 40px rgba(244, 67, 54, 0.3);
+}
+
+.copy-button--error .copy-button__icon {
+  animation: errorShake 0.4s ease-out;
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* Icon container */
+.copy-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.copy-button__icon svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Text label */
+.copy-button__text {
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Disabled state */
+.copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Mobile (< 768px) - Touch-friendly targets */
+@media (max-width: 767px) {
+  .copy-button {
+    /* Minimum 44px height for touch targets (iOS/Android guidelines) */
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    /* Prevent double-tap zoom on mobile */
+    touch-action: manipulation;
+  }
+
+  .copy-button__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .copy-button__text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .copy-button {
+    min-height: 44px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .copy-button {
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+  
+  .copy-button:hover .copy-button__icon {
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   Accessibility - Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-button,
+  .copy-button__icon,
+  .copy-button__text {
+    transition: none;
+    animation: none;
+  }
+  
+  .copy-button:hover {
+    transform: none;
+  }
+  
+  .copy-button:active {
+    transform: none;
+  }
+}

@@ -1,0 +1,128 @@
+/* EmailResponseGenerator Component Styles */
+
+.email-response-generator {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.email-response-generator__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Error Display Styles */
+.email-response-generator__error {
+  width: 100%;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(244, 67, 54, 0.3);
+}
+
+.error-message__icon {
+  font-size: var(--font-size-xl);
+  flex-shrink: 0;
+}
+
+.error-message__text {
+  flex: 1;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.error-message__close {
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.error-message__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.error-message__close:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.3);
+}
+
+.error-message__close:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .email-response-generator {
+    padding: var(--spacing-md);
+  }
+
+  .email-response-generator__container {
+    gap: var(--spacing-lg);
+  }
+
+  .error-message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .error-message__icon {
+    font-size: var(--font-size-lg);
+  }
+
+  .error-message__text {
+    font-size: var(--font-size-sm);
+  }
+
+  .error-message__close {
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .email-response-generator {
+    padding: var(--spacing-xl);
+  }
+
+  .email-response-generator__container {
+    gap: var(--spacing-2xl);
+  }
+}
